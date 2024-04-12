@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("this is basic route");
+    res.send(`<h1 align="center">--- Uni-Book Server is Running ---</h1>`);
 });
 
 module.exports = app;
