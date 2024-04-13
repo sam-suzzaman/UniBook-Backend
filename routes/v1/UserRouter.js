@@ -11,6 +11,7 @@ const {
 } = require("../../middlewares/authenticationMiddleware");
 
 // Routes(Private)
+UserRouter.route("/").put(isAuthenticatedUser, UserController.updateProfile);
 UserRouter.route("/reset-password").put(
     isAuthenticatedUser,
     UserController.resetPasswordHandler

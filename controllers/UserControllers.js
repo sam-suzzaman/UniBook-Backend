@@ -3,6 +3,35 @@ const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
 // Handlers
+exports.updateProfile = async (req, res, next) => {
+    try {
+        if (Object.keys(req.body).length === 0) {
+            res.status(400).json({
+                status: false,
+                message: "profile update failed",
+                error: "Provide updated informations",
+            });
+        } else {
+            result = await UserModel.updateOne(
+                req.user,
+                { $set: req.body },
+                { runValidators: true }
+            );
+            res.status(200).json({
+                status: true,
+                message: "Profile updated Successfully",
+                result,
+            });
+        }
+    } catch (err) {
+        res.status(400).json({
+            status: false,
+            message: "password reset failed",
+            error: err.message,
+        });
+    }
+};
+
 exports.resetPasswordHandler = async (req, res, next) => {
     const { email, oldPassword, newPassword } = req.body;
 
