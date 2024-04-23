@@ -19,12 +19,14 @@ app.use(
 // Importing Routers
 const AuthRouter = require("./routes/v1/AuthRouter");
 const UserRouter = require("./routes/v1/UserRouter");
+const CollegeRouter = require("./routes/v1/CollegeRouter");
 
 // Middlewares
 app.use(express.json());
 app.use(cors());
 
 // Connecting Routers
+app.use("/api/v1/college", CollegeRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/user", UserRouter);
 
