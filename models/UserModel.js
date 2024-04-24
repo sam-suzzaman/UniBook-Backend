@@ -5,10 +5,10 @@ const UserSchema = new mongoose.Schema(
     {
         username: {
             type: String,
-            required: [true, "username is required"],
-            trim: true,
-            minLength: [5, "Too short username(min 3char)"],
-            maxLength: [30, "Too long username( max 30char)"],
+            // required: [true, "username is required"],
+            // trim: true,
+            // minLength: [5, "Too short username(min 3char)"],
+            // maxLength: [30, "Too long username( max 30char)"],
         },
         email: {
             type: String,
@@ -16,10 +16,14 @@ const UserSchema = new mongoose.Schema(
         },
         password: {
             type: String,
-            required: [true, "Valid password is required"],
-            trim: true,
-            minLength: [6, "Too short(min 6char)"],
-            maxLength: [20, "Too long( max 20char)"],
+            // required: [true, "Valid password is required"],
+            // trim: true,
+            // minLength: [6, "Too short(min 6char)"],
+            // maxLength: [20, "Too long( max 20char)"],
+        },
+        isAdmitted: {
+            type: Boolean,
+            default: false,
         },
     },
     { timestamps: true }
@@ -27,10 +31,13 @@ const UserSchema = new mongoose.Schema(
 
 // Hashing Password
 UserSchema.pre("save", async function (next) {
-    const password = this.password;
-    const salt = await bcrypt.genSalt(16);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    this.password = hashedPassword;
+    if (this.password) {
+        const password = this.password;
+        const salt = await bcrypt.genSalt(16);
+        const hashedPassword = bcrypt.hashSync(password, salt);
+        this.password = hashedPassword;
+        next();
+    }
     next();
 });
 

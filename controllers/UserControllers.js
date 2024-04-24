@@ -12,6 +12,7 @@ exports.updateProfile = async (req, res, next) => {
                 error: "Provide updated informations",
             });
         } else {
+            // need to check is the req.user is an array or object before update it
             result = await UserModel.updateOne(
                 req.user,
                 { $set: req.body },
