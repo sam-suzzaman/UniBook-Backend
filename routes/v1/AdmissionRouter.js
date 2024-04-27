@@ -10,7 +10,10 @@ const {
 } = require("../../middlewares/authenticationMiddleware");
 
 // Routes(Private)
-// AdmissionRoute.route("/").post(isAuthenticatedUser);
+AdmissionRouter.route("/").get(
+    isAuthenticatedUser,
+    AdmissionController.getAdmittedCollegeHandler
+);
 
 // Routes(Public)
 AdmissionRouter.route("/").post(AdmissionController.confirmAdmissionHandler);

@@ -25,6 +25,18 @@ const UserSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        department: {
+            type: String,
+            default: "",
+        },
+        address: {
+            type: String,
+            default: "",
+        },
+        contact: {
+            type: String,
+            default: "",
+        },
     },
     { timestamps: true }
 );

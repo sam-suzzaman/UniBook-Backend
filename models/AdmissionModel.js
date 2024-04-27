@@ -4,7 +4,7 @@ const AdmissionSchema = new mongoose.Schema(
     {
         collegeID: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "college",
+            ref: "College",
             required: [true, "A selected college required"],
             trim: true,
         },

@@ -20,12 +20,14 @@ const AuthRouter = require("./routes/v1/AuthRouter");
 const UserRouter = require("./routes/v1/UserRouter");
 const CollegeRouter = require("./routes/v1/CollegeRouter");
 const AdmissionRouter = require("./routes/v1/AdmissionRouter");
+const ReviewRouter = require("./routes/v1/ReviewRouter");
 
 // Connecting Routers
 app.use("/api/v1/college", CollegeRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/admission", AdmissionRouter);
+app.use("/api/v1/review", ReviewRouter);
 
 app.get("/", (req, res) => {
     res.send(`<h1 align="center">--- Uni-Book Server is Running ---</h1>`);

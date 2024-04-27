@@ -30,7 +30,7 @@ exports.registrationHandler = async (req, res, next) => {
             const one_day = 1000 * 60 * 60 * 24; //since token expire in 1day
             res.cookie(process.env.COOKIE_NAME, TOKEN, {
                 expires: new Date(Date.now() + one_day),
-                secure: false, //todo: must turn into true
+                secure: true,
                 httpOnly: true,
                 signed: true,
                 sameSite: "None",
@@ -86,11 +86,10 @@ exports.loginHandler = async (req, res, next) => {
                         username: isUserExists.username,
                     };
                     const TOKEN = JWTgenerator(tokenObj);
-
                     const one_day = 1000 * 60 * 60 * 24; //since token expire in 1day
                     res.cookie(process.env.COOKIE_NAME, TOKEN, {
                         expires: new Date(Date.now() + one_day),
-                        secure: true, //todo: must turn into true
+                        secure: true,
                         httpOnly: true,
                         signed: true,
                         sameSite: "None",
@@ -143,11 +142,11 @@ exports.socialLoginHandler = async (req, res, next) => {
                 const TOKEN = JWTgenerator(tokenObj);
 
                 const one_day = 1000 * 60 * 60 * 24; //since token expire in 1day
-                const twoMinutes = 2 * 60 * 1000;
+                // const twoMinutes = 2 * 60 * 1000;
                 // const expireTime = new Date(Date.now() + one_day);
                 res.cookie(process.env.COOKIE_NAME, TOKEN, {
-                    expires: new Date(Date.now() + twoMinutes),
-                    secure: true, //todo: must turn into true
+                    expires: new Date(Date.now() + one_day),
+                    secure: true,
                     httpOnly: true,
                     signed: true,
                     sameSite: "None",
@@ -169,10 +168,11 @@ exports.socialLoginHandler = async (req, res, next) => {
                 const one_day = 1000 * 60 * 60 * 24; //since token expire in 1day
                 res.cookie(process.env.COOKIE_NAME, TOKEN, {
                     expires: new Date(Date.now() + one_day),
-                    secure: false, //todo: must turn into true
+                    secure: true,
                     httpOnly: true,
                     signed: true,
                     sameSite: "None",
+                    path: "/",
                 });
                 // Exclude(remove) password field from the result
                 const { password, ...resultWithoutPassword } =
@@ -204,7 +204,7 @@ exports.logoutHandler = async (req, res, next) => {
     try {
         res.cookie(process.env.COOKIE_NAME, "", {
             sameSite: "none",
-            secure: false, //todo: must turn into true
+            secure: true,
             httpOnly: true,
             expires: new Date(0),
             path: "/",
