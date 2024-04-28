@@ -90,3 +90,22 @@ exports.getGraduatesGalllery = async (req, res) => {
         });
     }
 };
+
+// exports.getRecomendedPapers = async (req, res) => {
+//     try {
+//         const result = await CollegeModel.find({})
+//             .sort({ createdAt: -1 })
+//             .limit(2).select("");
+//         res.status(200).json({
+//             status: true,
+//             message: "data fetching done",
+//             result,
+//         });
+//     } catch (error) {
+//         res.status(400).json({
+//             status: false,
+//             message: "data fetch failed",
+//             error: error.message,
+//         });
+//     }
+// };

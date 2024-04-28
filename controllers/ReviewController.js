@@ -56,7 +56,10 @@ exports.addReviewHandler = async (req, res) => {
 
 exports.getAllReviewHandler = async (req, res) => {
     try {
-        const result = await ReviewModel.find({});
+        const result = await ReviewModel.find({})
+            .populate("userID", "username")
+            .populate("collegeID", "collegeName")
+            .sort({ createdAt: -1 });
         res.status(200).json({
             status: true,
             message: "Review data fetch done",
