@@ -18,9 +18,6 @@ ReviewRouter.route("/:userID/:collegeID").get(
     isAuthenticatedUser,
     ReviewController.getSingleReviewHandler
 );
-ReviewRouter.route("/").get(
-    isAuthenticatedUser,
-    ReviewController.getAllReviewHandler
-);
+ReviewRouter.route("/").get(ReviewController.getAllReviewHandler);
 
 module.exports = ReviewRouter;
