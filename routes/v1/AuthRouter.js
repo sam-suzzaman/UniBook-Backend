@@ -17,7 +17,7 @@ AuthRouter.route("/logout").post(
 
 // Routes(Public)
 AuthRouter.route("/register").post(AuthController.registrationHandler);
-AuthRouter.route("/login/social").post(AuthController.socialLoginHandler);
+AuthRouter.route("/social-login").post(AuthController.socialLoginHandler);
 AuthRouter.route("/login").post(AuthController.loginHandler);
 
 module.exports = AuthRouter;

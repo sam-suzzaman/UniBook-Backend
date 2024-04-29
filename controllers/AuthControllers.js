@@ -123,7 +123,6 @@ exports.loginHandler = async (req, res, next) => {
 };
 
 exports.socialLoginHandler = async (req, res, next) => {
-    console.log("pass", req.body);
     try {
         if (req.body.email) {
             const isUserExists = await UserModel.findOne({
