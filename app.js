@@ -11,7 +11,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173",
-            "https://unibook-jade.vercel.app/",
+            "https://universitybook.netlify.app/",
             "*",
         ],
         methods: ["GET,POST,DELETE,PUT,PATCH"],
