@@ -14,7 +14,7 @@ app.use(
             "https://universitybook.netlify.app/",
             "*",
         ],
-        methods: ["GET,POST,DELETE,PUT,PATCH"],
+        methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
         credentials: true,
     })
 );
